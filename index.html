@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cumulus — Politique de confidentialité</title>
+<!-- Page destinée à être hébergée À UNE URL PUBLIQUE : le Play Store l'exige dès
+     qu'une app demande la position. Aucune ressource externe (pas de police
+     Google, pas de CDN) : une politique de confidentialité qui ferait fuiter
+     l'IP de son lecteur vers un tiers se contredirait elle-même.
+     Les faits de cette page sont VÉRIFIÉS dans app/cumulus.html et contrôlés par
+     outils/verifier-politique.mjs — si la liste blanche CSP de l'app change,
+     ce contrôle rougit. -->
+<style>
+:root{
+  --fond:#fbfdff; --encre:#12242e; --doux:#4a6474; --marque:#2b7fb8;
+  --carte:#ffffff; --bord:#dbe8f1; --ciel:#b9e3f9;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --fond:#0e1a21; --encre:#e8f2f8; --doux:#9db4c1; --marque:#7cc4ec;
+         --carte:#152530; --bord:#253a48; }
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--fond); color:var(--encre);
+     font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+     padding:0 20px 64px}
+main{max-width:44rem; margin:0 auto}
+header{padding:40px 0 8px; border-bottom:4px solid var(--ciel); margin-bottom:28px}
+h1{font-size:1.7rem; line-height:1.25; margin:0 0 6px}
+h2{font-size:1.15rem; margin:34px 0 10px; color:var(--marque)}
+p,li{margin:10px 0}
+.maj{color:var(--doux); font-size:.9rem; margin:0}
+.resume{background:var(--carte); border:1px solid var(--bord); border-radius:14px;
+        padding:16px 20px; margin:24px 0}
+.resume ul{margin:8px 0 0; padding-left:20px}
+code{background:var(--carte); border:1px solid var(--bord); border-radius:5px;
+     padding:1px 5px; font-size:.88em; word-break:break-all}
+table{border-collapse:collapse; width:100%; margin:14px 0; font-size:.94rem}
+th,td{text-align:left; padding:7px 10px; border-bottom:1px solid var(--bord); vertical-align:top}
+th{color:var(--doux); font-weight:600}
+a{color:var(--marque)}
+footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--bord);
+       color:var(--doux); font-size:.9rem}
+</style>
+<main>
+<header>
+  <h1>Cumulus — Politique de confidentialité</h1>
+  <p class="maj">Application Android <code>com.protoboy.meteo</code> · dernière mise à jour&nbsp;: 8 novembre 2026</p>
+</header>
+
+<div class="resume">
+  <strong>En résumé</strong>
+  <ul>
+    <li>Cumulus n'a <strong>ni compte, ni publicité, ni traceur, ni statistique d'usage</strong>.</li>
+    <li>La <strong>position du lieu consulté</strong> (arrondie à environ 110&nbsp;m) est envoyée à
+        <strong>Open-Meteo</strong> pour obtenir la prévision&nbsp;: c'est la seule donnée qui quitte
+        le téléphone, et c'est ce qui permet à l'application de fonctionner.</li>
+    <li>Tout le reste — vos lieux favoris, vos réglages — <strong>reste sur le téléphone</strong>,
+        n'est envoyé à personne, et disparaît si vous désinstallez l'application.</li>
+  </ul>
+</div>
+
+<h2>Qui édite cette application</h2>
+<p>Cumulus est éditée par <strong>Alexis Gioda</strong>, personne physique, France. Ce n'est pas un
+service commercial&nbsp;: l'application est gratuite, sans achat intégré et sans publicité.</p>
+
+<h2>Ce que l'application envoie, et à qui</h2>
+<p>Cumulus est un client météo&nbsp;: pour afficher une prévision, elle doit demander cette prévision
+à un serveur. Les seules requêtes qu'elle émet vont vers <strong>Open-Meteo</strong>, sur cinq
+adresses&nbsp;:</p>
+<table>
+  <tr><th>Adresse</th><th>À quoi elle sert</th></tr>
+  <tr><td><code>api.open-meteo.com</code></td><td>la prévision météo</td></tr>
+  <tr><td><code>geocoding-api.open-meteo.com</code></td><td>la recherche d'une commune par son nom</td></tr>
+  <tr><td><code>air-quality-api.open-meteo.com</code></td><td>la qualité de l'air et les pollens</td></tr>
+  <tr><td><code>previous-runs-api.open-meteo.com</code></td><td>les prévisions précédentes, pour corriger le biais des modèles</td></tr>
+  <tr><td><code>archive-api.open-meteo.com</code></td><td>les relevés passés servant de référence</td></tr>
+</table>
+<p>Ces requêtes contiennent&nbsp;:</p>
+<ul>
+  <li>les <strong>coordonnées du lieu consulté</strong>. Si ce lieu est votre position GPS, elle est
+      <strong>arrondie à trois décimales avant tout envoi</strong>, soit une précision d'environ
+      <strong>110&nbsp;mètres</strong>&nbsp;: la position exacte de l'appareil ne quitte jamais le
+      téléphone. Si le lieu est une commune que vous avez cherchée ou mise en favori, ce sont les
+      coordonnées de cette commune (son centre, tel que le service de géocodage le donne) qui sont
+      envoyées&nbsp;;</li>
+  <li>le <strong>texte que vous saisissez</strong> dans la recherche de commune, envoyé au service de
+      géocodage&nbsp;;</li>
+  <li>l'<strong>adresse IP</strong> de votre connexion, comme pour toute requête sur internet.</li>
+</ul>
+<p>Aucun identifiant d'appareil, aucun identifiant publicitaire, aucun compte, aucun nom&nbsp;: rien
+dans ces requêtes ne vous désigne. Open-Meteo est opéré par <strong>OpenMeteo GmbH</strong> (Bürglen,
+<strong>Suisse</strong>) — les données transitent donc hors de l'Union européenne. Leurs conditions et
+leur politique de confidentialité&nbsp;:
+<a href="https://open-meteo.com/en/terms">open-meteo.com/en/terms</a>.</p>
+
+<h2>Ce que l'application ne fait pas</h2>
+<ul>
+  <li>aucun compte, aucune inscription, aucune synchronisation&nbsp;;</li>
+  <li>aucune publicité, aucun identifiant publicitaire&nbsp;;</li>
+  <li>aucun outil de mesure d'audience ni de télémétrie (pas de Google Analytics, Firebase, Sentry ou
+      équivalent)&nbsp;: l'éditeur ne sait pas si, quand, ni comment vous utilisez l'application&nbsp;;</li>
+  <li>aucun rapport de plantage envoyé&nbsp;: le dernier problème rencontré est écrit
+      <em>sur le téléphone</em>, visible dans l'écran «&nbsp;À propos&nbsp;», et n'est jamais transmis&nbsp;;</li>
+  <li>aucune vente, aucun partage à des fins commerciales — il n'y a rien à vendre.</li>
+</ul>
+
+<h2>Ce qui reste sur votre téléphone</h2>
+<p>Ces informations sont enregistrées dans le stockage local de l'application. Elles ne sont
+<strong>jamais envoyées</strong>, et la <strong>sauvegarde automatique Android est désactivée</strong>
+&nbsp;: elles ne remontent donc pas non plus vers votre compte Google.</p>
+<table>
+  <tr><th>Enregistré</th><th>Pourquoi</th></tr>
+  <tr><td>vos lieux favoris et le dernier lieu consulté</td><td>les retrouver au lancement</td></tr>
+  <tr><td>vos réglages&nbsp;: thème, ciel animé, pollen suivi</td><td>respecter vos choix</td></tr>
+  <tr><td>un refus de la géolocalisation</td><td>ne pas vous redemander la permission</td></tr>
+  <tr><td>le tutoriel déjà vu</td><td>ne pas vous le remontrer à chaque lancement</td></tr>
+  <tr><td>la dernière prévision et la dernière mesure d'air reçues pour chaque lieu (remplacées à chaque mise à jour, affichées tant qu'elles couvrent l'heure en cours)</td><td>afficher quelque chose hors ligne</td></tr>
+  <tr><td>la correction de biais des modèles pour vos lieux (recalculée au plus une fois par jour ; la dernière reste utilisée si le réseau manque)</td><td>améliorer la prévision affichée</td></tr>
+  <tr><td>le dernier problème rencontré</td><td>pouvoir le montrer dans l'écran «&nbsp;À propos&nbsp;»</td></tr>
+</table>
+
+<h2>Permissions demandées</h2>
+<p>Cumulus déclare trois permissions, et seulement trois&nbsp;: l'<strong>accès à internet</strong>
+(<code>INTERNET</code>, accordée automatiquement par Android, sans invite&nbsp;— sans elle, aucune
+prévision), la <strong>position approximative</strong> (<code>ACCESS_COARSE_LOCATION</code>) et la
+<strong>position précise</strong> (<code>ACCESS_FINE_LOCATION</code>). Les deux permissions de
+position servent uniquement à centrer la météo sur l'endroit où vous
+êtes, sont demandées <strong>pendant que vous utilisez l'application</strong>, jamais en arrière-plan.
+Vous pouvez les refuser&nbsp;: l'application reste entièrement utilisable en cherchant une commune par
+son nom. L'application ne demande aucune autre permission — ni contacts, ni photos, ni fichiers, ni
+micro, ni caméra — et jamais la position en arrière-plan.</p>
+
+<h2>Combien de temps, et comment tout effacer</h2>
+<p>L'éditeur ne conserve <strong>rien</strong>&nbsp;: il n'y a ni serveur, ni base de données, ni
+journal côté Cumulus. Ces données restent sur le téléphone jusqu'à ce qu'une donnée plus récente les remplace : elles ne s'effacent pas d'elles-mêmes. Pour effacer
+définitivement l'ensemble de ce que l'application a enregistré, il suffit de la
+<strong>désinstaller</strong>, ou d'utiliser <em>Paramètres → Applications → Cumulus → Stockage →
+Effacer les données</em>. Vos favoris et vos réglages disparaissent alors du téléphone.</p>
+
+<h2>Vos droits</h2>
+<p>Le règlement européen (RGPD) vous donne un droit d'accès, de rectification et d'effacement sur vos
+données personnelles. Comme l'éditeur n'en détient aucune, ces droits s'exercent <strong>directement
+sur votre téléphone</strong> (voir ci-dessus). Pour les requêtes reçues par Open-Meteo, adressez-vous
+à OpenMeteo GmbH via <a href="https://open-meteo.com/en/terms">open-meteo.com/en/terms</a>.</p>
+
+<h2>Enfants</h2>
+<p>Cumulus ne s'adresse pas spécifiquement aux enfants et ne collecte sciemment aucune donnée les
+concernant — elle ne collecte de donnée sur personne.</p>
+
+<h2>Modifications</h2>
+<p>Toute évolution de cette politique sera publiée à cette même adresse, avec une nouvelle date de
+mise à jour. Un changement qui élargirait ce que l'application envoie sera accompagné d'une nouvelle
+version de l'application.</p>
+
+<h2>Contact</h2>
+<p>Pour toute question sur cette politique&nbsp;: <!--email_off--><a href="mailto:apps@alexis-gioda.ovh">apps@alexis-gioda.ovh</a><!--/email_off-->.</p>
+
+<footer>
+Cumulus · application météo Android · <code>com.protoboy.meteo</code><br>
+Cette page décrit la version 4.21 et les suivantes tant qu'elle n'est pas modifiée.
+</footer>
+</main>
+</html>
